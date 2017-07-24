@@ -1,0 +1,43 @@
+
+<form (ngSubmit)="enviarDados()" #cadastro="ngForm">
+    <div ngModelGroup="allUsers" #allUsers="ngModelGroup">
+        <div>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" #nome="ngModel" [(ngModel)]="usuario.nome" class="" name="nome" required>
+
+            <div [hidden]="nome.valid || nome.pristine">
+                <p>O valor nome é obrigatório</p>
+            </div>
+        </div>
+
+    <br>
+    
+        <div>
+            <label for="email">email</label>
+            <input type="text" id="email" [(ngModel)]="usuario.email" #email="ngModel" name="email" required>
+
+            <div *ngIf="email.invalid && email.dirty">
+                <p>Email é obrigatório</p>
+            </div>
+        </div>
+        <br>
+
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" [(ngModel)]="usuario.senha" #senha="ngModel" name="senha">
+
+            <div [hidden]="senha.pristine">
+                <p>O conteúdo foi mudado</p>
+            </div>
+            <div *ngIf="senha.touched">
+                <p>Clicou fora do campo</p>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <button type="submit" [disabled]="cadastro.form.invalid">Enviar</button>
+</form>
+
+<!--p>{{allUsers.value | json}}</p-->

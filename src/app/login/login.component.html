@@ -1,0 +1,33 @@
+<form  #cadastro="ngForm">
+    <div ngModelGroup="allUsers" #allUsers="ngModelGroup">
+        <div>
+            <label for="login">Login</label>
+            <input type="text" id="login" #nome="ngModel" [(ngModel)]="user.email" name="login" required>
+
+            <div [hidden]="nome.valid || nome.pristine">
+                <p>Insira seu login</p>
+            </div>
+        </div>
+
+    <br>
+    
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" [(ngModel)]="user.senha" #email="ngModel" name="senha" required>
+
+            <div *ngIf="email.invalid && email.dirty">
+                <p>Insira sua senha</p>
+            </div>
+        </div>
+
+        <br>
+        
+    </div>
+    <button [hidden] = "altflag" type="button" (click)="entrar()" >Entrar</button>
+    
+    <button [hidden] = "!altflag" type="button" (click)="entrar()" >Alterar Usuário</button>
+</form>
+
+<p>Ainda não tem uma conta? Cadastre-se 
+    <a href="cadastro">clicando aqui!</a>
+</p>
