@@ -16,13 +16,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
      this.userlist = JSON.parse(localStorage.getItem("users"));
-     let userlogin : Usuario = JSON.parse(localStorage.getItem("login"));
+     let userlogin : string = JSON.parse(localStorage.getItem("login"));
      if (userlogin){
-      /* this.user = this.userlist.filter(usuario => {
+       this.user = this.userlist.filter(usuario => {
           if(usuario.email == userlogin){
-            return usuario
+            console.log("busca")
+            return usuario;
           }
-      })[0];*/
+      })[0];
        this.altflag = true;
      }
   }
