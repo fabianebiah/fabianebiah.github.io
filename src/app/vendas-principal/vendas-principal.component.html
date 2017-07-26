@@ -5,11 +5,15 @@
                 <li> <img src="../../assets/img/cama_caes.jpg" alt="Cama" height="128" width="176"> 
                     <p>{{cama.descricao}}</p>
                     <p>R$ {{cama.preco}}</p>
-                <button type="button" id="bt1" (click)="inserirCompra(1)">Comprar!</button> </li>
+                    <input type="number" num="1" max="99" id="cama.quantidade" #nome="ngModel" [(ngModel)]="cama.quantidade" name="quant" >
+                    <button type="button" id="bt1" (click)="inserirCompra(1)">Comprar!</button> </li>
 
                 <li> <img src="../../assets/img/coleira_caes.jpg" alt="Coleira" height="150" width="150">
                  <p>{{coleira.descricao}}</p>
                  <p>R$ {{coleira.preco}}</p>
+                 <p>Quantidade</p>
+                  <input type="number" num="1" max="99" id="cama.quantidade" #nome="ngModel" [(ngModel)]="coleira.quantidade" name="quant" >
+                 <br>
                 <button type="button" id="bt2" (click)="inserirCompra(2)">Comprar!</button> </li>
 
             </ul>
@@ -22,11 +26,13 @@
                 <li> <img src="assets/img/toca_gatos.jpg" alt="Toca" height="150" width="150"> 
                      <p>{{toca.descricao}}</p>
                      <p>R$ {{toca.preco}}</p>
+                     <input type="number" num="1" max="99" id="cama.quantidade" #nome="ngModel" [(ngModel)]="toca.quantidade" name="quant" >  
                 <button type="button" id="bt3" (click)="inserirCompra(3)">Comprar!</button> </li>
 
                 <li> <img src="assets/img/arranhador_gatos.jpg" alt="Arranhador" height="120" width="151">
                  <p>{{arranhador.descricao}}</p>
                  <p>R$ {{arranhador.preco}}</p>
+                  <input type="number" num="1" max="99" id="cama.quantidade" #nome="ngModel" [(ngModel)]="arranhador.quantidade" name="quant" >
                 <button type="button" id="bt4" (click)="inserirCompra(4)">Comprar!</button> </li>
 
             </ul>

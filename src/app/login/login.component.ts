@@ -10,21 +10,18 @@ import { Usuario } from '../modelo/usuario';
 export class LoginComponent implements OnInit {
  user = new Usuario("", "", "");
  userlist : Usuario [] ;
- altflag: boolean = false;
-
   constructor() { }
 
   ngOnInit() {
      this.userlist = JSON.parse(localStorage.getItem("users"));
-     let userlogin : string = JSON.parse(localStorage.getItem("login"));
-     if (userlogin){
+     let userlogin : string =localStorage.getItem("login");
+    if (userlogin){
        this.user = this.userlist.filter(usuario => {
           if(usuario.email == userlogin){
             console.log("busca")
             return usuario;
           }
       })[0];
-       this.altflag = true;
      }
   }
    entrar() {   
@@ -36,13 +33,16 @@ export class LoginComponent implements OnInit {
           }
       })[0];
         if (usr){
-           localStorage.setItem("login", this.user.email)
+           localStorage.setItem("login", this.user.email);
           window.location.href="";
         }
         else {
           alert("Usuário ou senha inválidos")
         }
     }
+      else{
+         alert("Usuário ou senha inválidos");
+      }
   }
 }
 

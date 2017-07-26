@@ -14,7 +14,7 @@
     
         <div>
             <label for="email">email</label>
-            <input type="text" id="email" [(ngModel)]="usuario.email" #email="ngModel" name="email" required>
+            <input type="email" id="email" [(ngModel)]="usuario.email" #email="ngModel" name="email" required [readonly]="readonlybool" >
 
             <div *ngIf="email.invalid && email.dirty">
                 <p>Email é obrigatório</p>
@@ -37,7 +37,8 @@
 
     <br>
 
-    <button type="submit" [disabled]="cadastro.form.invalid">Enviar</button>
+    <button [hidden]="!readonly" type="submit" [disabled]="cadastro.form.invalid">{{readonly}}</button>
+   
 </form>
 
 <!--p>{{allUsers.value | json}}</p-->

@@ -2,7 +2,7 @@
     <div ngModelGroup="allUsers" #allUsers="ngModelGroup">
         <div>
             <label for="login">Login</label>
-            <input type="text" id="login" #nome="ngModel" [(ngModel)]="user.email" name="login" required>
+            <input type="email" id="login" #nome="ngModel" [(ngModel)]="user.email" name="login" required>
 
             <div [hidden]="nome.valid || nome.pristine">
                 <p>Insira seu login</p>
@@ -13,7 +13,7 @@
     
         <div>
             <label for="senha">Senha</label>
-            <input type="password" id="senha" [(ngModel)]="user.senha" #email="ngModel" name="senha" required>
+            <input  type="password" id="senha" [(ngModel)]="user.senha" #email="ngModel" name="senha" required>
 
             <div *ngIf="email.invalid && email.dirty">
                 <p>Insira sua senha</p>
@@ -23,9 +23,8 @@
         <br>
         
     </div>
-    <button [hidden] = "altflag" type="button" (click)="entrar()" >Entrar</button>
-    
-    <button [hidden] = "!altflag" type="button" (click)="entrar()" >Alterar Usuário</button>
+    <button  type="button" (click)="entrar()" >Entrar</button>
+
 </form>
 
 <p>Ainda não tem uma conta? Cadastre-se 

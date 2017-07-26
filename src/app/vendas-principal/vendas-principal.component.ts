@@ -10,27 +10,31 @@ import { Usuario } from '../modelo/usuario'
 
 export class VendasPrincipalComponent implements OnInit {
 
-    cama = new Produto('Cama Dog Premium pequena - PetMania', '80,00', '1');
-    coleira = new Produto('Coleira BatDog - Mundo Pet', '30,00', '1');
-    toca = new Produto('Toca com almofada - Stylo Cat', '100,00', '1234');
-    arranhador = new Produto('Arranhador Gato Feliz - PetLife', '70,00', '1234');
+    cama = new Produto('Cama Dog Premium pequena - PetMania', '80,00', 1);
+    coleira = new Produto('Coleira BatDog - Mundo Pet', '30,00', 1);
+    toca = new Produto('Toca com almofada - Stylo Cat', '100,00', 1);
+    arranhador = new Produto('Arranhador Gato Feliz - PetLife', '70,00', 1);
     usuario : string;
+    qtde: string;
 
-//compras:Produto [] = [];
-compras:Produto [] = [];
+    compras:Produto [] = [];
+    logado : boolean ;
+
   constructor() { }
 
 
   ngOnInit() {
+    this.logado = false;
     this.usuario =  localStorage.getItem("login");
-     if(!this.compras){
-        this.compras= [];
-     }    
+                     console.log(this.usuario);
+    if (this.usuario){
+        this.logado = true;
+      }
   }
 
   inserirCompra(idBt: number){
 
-    if (!this.usuario){
+    if (!this.logado){
       alert("Faça seu login para começar suas compras!");
     }
     else{
@@ -41,8 +45,11 @@ compras:Produto [] = [];
         if(!this.compras){
            this.compras= [];
        }
+
        this.compras.push(this.cama);
-       localStorage.setItem( this.usuario, JSON.stringify(this.compras));     
+
+       localStorage.setItem( this.usuario, JSON.stringify(this.compras));
+       this.cama.quantidade=1;     
       break; 
    } 
    case 2: {

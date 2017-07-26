@@ -10,6 +10,8 @@ export class CadastroComponent implements OnInit {
 
   usuario = new Usuario('', '', '');
   list : Usuario [];
+  readonly : string = "Cadastrar";
+  readonlybool : boolean = false;
 
   constructor() { }
 
@@ -18,7 +20,20 @@ export class CadastroComponent implements OnInit {
     if(!this.list){
            this.list= [];
        }
+          else{
+              let login: string = localStorage.getItem("login");
 
+              if (login){
+                  this.usuario = this.list.filter(user => {
+                      if(user.email == login){
+                        return user;
+                      }
+                  })[0];
+                  this.readonly = "Alterar dados";
+                  this.readonlybool=true;
+         }
+  }
+console.log(this.readonly);
   }
 
   enviarDados() {
