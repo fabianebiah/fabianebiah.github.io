@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../modelo/produto';
-import { Usuario } from '../modelo/usuario'
+import { Usuario } from '../modelo/usuario';
+import { Compra } from '../modelo/compra';
+import{ DataServiceService } from '../service/data-service.service'
 
 @Component({
   selector: 'app-vendas-principal',
@@ -20,16 +22,16 @@ export class VendasPrincipalComponent implements OnInit {
     compras:Produto [] = [];
     logado : boolean ;
 
-  constructor() { }
+  constructor(private dataService: DataServiceService) { }
 
 
   ngOnInit() {
-    this.logado = false;
-    this.usuario =  localStorage.getItem("login");
-                     console.log(this.usuario);
-    if (this.usuario){
-        this.logado = true;
-      }
+    this.usuario =this.dataService.getLogin();
+    if(this.usuario=="")
+      this.logado =false;
+    else
+      this.logado=true;
+ 
   }
 
   inserirCompra(idBt: number){
@@ -39,54 +41,58 @@ export class VendasPrincipalComponent implements OnInit {
     }
     else{
 
-    switch(idBt) { 
-   case 1: { 
-        this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ;
-        if(!this.compras){
-           this.compras= [];
-       }
+      switch(idBt) { 
+        case 1: { 
+            /* this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ;
+              if(!this.compras){
+                this.compras= [];
+            }
 
-       this.compras.push(this.cama);
+            this.compras.push(this.cama);
 
-       localStorage.setItem( this.usuario, JSON.stringify(this.compras));
-       this.cama.quantidade=1;     
-      break; 
-   } 
-   case 2: {
-      this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ; 
-       if(!this.compras){
-           this.compras= [];
-       }
-       this.compras.push(this.coleira);
-       localStorage.setItem( this.usuario, JSON.stringify(this.compras));
-      break; 
-   } 
-   case 3: { 
-     this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ;
-      if(!this.compras){
-           this.compras= [];
-       }
-       this.compras.push(this.toca);
-       localStorage.setItem( this.usuario, JSON.stringify(this.compras));
-      break; 
-   } 
-   case 4: { 
-     this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ;
-    if(!this.compras){
-           this.compras= [];
-       }
-       this.compras.push(this.arranhador);
-       localStorage.setItem( this.usuario, JSON.stringify(this.compras));
-      break; 
-   } 
-   default: { 
-      //statements; 
-      break; 
-      
+            localStorage.setItem( this.usuario, JSON.stringify(this.compras));*/
+            this.dataService.addCarrinho(this.usuario,this.cama);
+            this.cama.quantidade=1;     
+            break; 
+        } 
+        case 2: {
+            /*this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ; 
+            if(!this.compras){
+                this.compras= [];
+            }
+            this.compras.push(this.coleira);
+            localStorage.setItem( this.usuario, JSON.stringify(this.compras));*/
+            this.dataService.addCarrinho(this.usuario,this.coleira);
+            break; 
+        } 
+        case 3: { 
+          /* this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ;
+            if(!this.compras){
+                this.compras= [];
+            }
+            this.compras.push(this.toca);
+            localStorage.setItem( this.usuario, JSON.stringify(this.compras));*/
+            this.dataService.addCarrinho(this.usuario,this.toca);
+            break; 
+        } 
+        case 4: { 
+        /*  this.compras =  JSON.parse(localStorage.getItem(this.usuario))  ;
+          if(!this.compras){
+                this.compras= [];
+            }
+            this.compras.push(this.arranhador);
+            localStorage.setItem( this.usuario, JSON.stringify(this.compras));*/
+
+              this.dataService.addCarrinho(this.usuario,this.arranhador);
+            break; 
+        } 
+        default: { 
+            //statements; 
+            break; 
+            
+        }
+
+      }
     }
-
   }
-    }
-
-}
 }

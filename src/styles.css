@@ -1,1 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+     font-family: "Montel";
+    src: url("./assets/fonts/Montel.ttf") format('truetype');
+    font-weight: bold; 
+        
+}
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .my-product{
+        align-items: center;
+    }
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+      background-image:url(./assets/img/header_img.png) ;
+    /* background-size:     cover;                    */
+    background-repeat:   repeat;
+      
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+.page-header{
+    background-color:#EDC9AF;
+}
+.container-fluid text-center{
+    background-color:#EDC9AF; 
+}
+ .btn{
+     color: white;
+     background-color: #5f1c2e;
+ }
+.btn:hover{
+    color: white;
+     background-color: #222222;
+
+}
+    .my-button-space{
+        margin-left: 10px;
+    }
+
+.col-xs-3{
+    align-content: center;
+    vertical-align: middle;
+    margin-top: 4px;
+}
+.panel{
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+.panel .my-product .panel-body {
+        text-align: center;
+}
+    .panel .my-product .panel-footer {
+        align-self: left;
+}
+.jumbotron h1{
+        font-family: "Montel";
+    src: url("./assets/fonts/Montel.ttf") ;
+        font-weight: bold;
+        color:#5f1c2e;
+}
+    .jumbotron h2{
+        font-family: "Helvetica";
+        color: #222222;
+
+}
+h2{
+    color: #5f1c2e;
+}
+body{
+    background-color: #fdf9f0;
+}
+ 
+
+.col-sm-2 .navbar .navbar-inverse p{
+    color:white;
+}
+.row .content .row .myrow{
+    align-content: center;
+    align-items: center;
+}

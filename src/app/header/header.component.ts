@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,13 +15,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.logado);
 
      let userlogin : string =localStorage.getItem("login");
-     console.log(userlogin);
      
      if(!userlogin|| userlogin==""){
-      this.logado = false;
+         this.logado = false;
       this.msglogin = "Login";
       this.msgdados="Criar uma conta"
 
@@ -34,13 +33,15 @@ export class HeaderComponent implements OnInit {
   }
 
   validaLogoff(){
+    console.log("logado");
     if(this.logado){
+      console.log("remover");
       localStorage.removeItem("login") ;
       this.logado = false;
       window.location.href="";
 
-      //this.msglogin = "Login";
-      //this.msgdados="Criar uma conta"
+      this.msglogin = "Login";
+      this.msgdados="Criar uma conta"
     }
 
   }

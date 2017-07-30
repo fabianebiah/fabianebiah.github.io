@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../modelo/usuario';
 import { Produto } from '../modelo/produto'
+import{ DataServiceService } from '../service/data-service.service'
+
 
 @Component({
   selector: 'app-carrinho',
@@ -12,7 +14,7 @@ export class CarrinhoComponent implements OnInit {
   lista: Produto [] =[];
   usuario : string; 
 
-  constructor() { }
+  constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
     this.usuario =  localStorage.getItem("login"); 
@@ -30,4 +32,21 @@ export class CarrinhoComponent implements OnInit {
     //console.log(this.lista);
 
   }
-}
+
+    inserirCompra(){
+      if(this.usuario && this.usuario!=""){
+        //inserrir serviço get list carrinho
+        /*let today = new Date();
+
+        
+        let compra: string =this.usuario + "_compra";
+        localStorage.setItem(compra, JSON.stringify(this.lista));
+        localStorage.removeItem(this.usuario);*/
+      //  addPedido(this.usuario, );
+
+      this.dataService.addPedido(this.usuario,this.lista);
+      }
+
+    }
+    
+ }

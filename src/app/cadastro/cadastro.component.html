@@ -1,9 +1,21 @@
 
+
+<div class="panel panel-warning">
+    
+  <div class="panel-heading">Seus Dados</div>
+  
+
+<div class="panel-body">
+
+
 <form (ngSubmit)="enviarDados()" #cadastro="ngForm">
+    
     <div ngModelGroup="allUsers" #allUsers="ngModelGroup">
+                
         <div>
             <label for="nome">Nome</label>
-            <input type="text" id="nome" #nome="ngModel" [(ngModel)]="usuario.nome" class="" name="nome" required>
+            <br>
+            <input class="col-xs-8" type="text" id="nome" #nome="ngModel" [(ngModel)]="usuario.nome" name="nome" required>
 
             <div [hidden]="nome.valid || nome.pristine">
                 <p>O valor nome é obrigatório</p>
@@ -13,8 +25,10 @@
     <br>
     
         <div>
+            <br>
             <label for="email">email</label>
-            <input type="email" id="email" [(ngModel)]="usuario.email" #email="ngModel" name="email" required [readonly]="readonlybool" >
+            <br>
+            <input type="email" class="col-xs-8" id="email" [(ngModel)]="usuario.email" #email="ngModel" name="email" required [readonly]="readonlybool" >
 
             <div *ngIf="email.invalid && email.dirty">
                 <p>Email é obrigatório</p>
@@ -23,22 +37,23 @@
         <br>
 
         <div>
-            <label for="senha">Senha</label>
-            <input type="password" id="senha" [(ngModel)]="usuario.senha" #senha="ngModel" name="senha">
-
-            <div [hidden]="senha.pristine">
-                <p>O conteúdo foi mudado</p>
-            </div>
-            <div *ngIf="senha.touched">
-                <p>Clicou fora do campo</p>
-            </div>
+            <br>
+            <label for="senha">Senha</label> <br>
+            <input class="col-xs-8" type="password" id="senha" [(ngModel)]="usuario.senha" #senha="ngModel" name="senha">
+            <br>
+           
         </div>
     </div>
 
-    <br>
+    <br><br>
 
-    <button [hidden]="!readonly" type="submit" [disabled]="cadastro.form.invalid">{{readonly}}</button>
+    <button class="btn" [hidden]="!readonly" type="submit" [disabled]="cadastro.form.invalid">{{readonly}}</button>
+    <button class="btn" [disabled]="!readonlybool" (click)="apagarUsuario" type="button">Apagar minha conta</button>
    
 </form>
+</div>
+</div>
+
+
 
 <!--p>{{allUsers.value | json}}</p-->

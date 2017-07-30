@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Usuario } from '../modelo/usuario';
+import{ DataServiceService } from '../service/data-service.service'
 
 
 @Component({
@@ -10,39 +12,22 @@ import { Usuario } from '../modelo/usuario';
 export class LoginComponent implements OnInit {
  user = new Usuario("", "", "");
  userlist : Usuario [] ;
-  constructor() { }
+
+  constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
-     this.userlist = JSON.parse(localStorage.getItem("users"));
-     let userlogin : string =localStorage.getItem("login");
-    if (userlogin){
-       this.user = this.userlist.filter(usuario => {
-          if(usuario.email == userlogin){
-            console.log("busca")
-            return usuario;
-          }
-      })[0];
-     }
+   let teste:boolean = this.dataService.usuarioLogado();  
   }
    entrar() {   
-    if(this.userlist){
-      let usr: Usuario;
-      usr = this.userlist.filter(usuario => {
-          if(usuario.email == this.user.email  && usuario.senha == this.user.senha){
-            return usuario
-          }
-      })[0];
-        if (usr){
-           localStorage.setItem("login", this.user.email);
-          window.location.href="";
-        }
-        else {
-          alert("Usuário ou senha inválidos")
-        }
+    if(this.dataService.validaLogin(this.user)){
+       window.location.href="";
     }
       else{
-         alert("Usuário ou senha inválidos");
+        //colocar uma msg de erro
+        alert("erro");
       }
+
   }
+
 }
 

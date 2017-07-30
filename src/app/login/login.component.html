@@ -1,31 +1,36 @@
+<div class="panel panel-warning">
+    <div class="panel-heading"><h3>Login</h3></div>
 <form  #cadastro="ngForm">
     <div ngModelGroup="allUsers" #allUsers="ngModelGroup">
-        <div>
-            <label for="login">Login</label>
+        
+                            <div class="panel-body">
+            <label for="login">Login</label> <br>
             <input type="email" id="login" #nome="ngModel" [(ngModel)]="user.email" name="login" required>
 
             <div [hidden]="nome.valid || nome.pristine">
                 <p>Insira seu login</p>
             </div>
-        </div>
+        
+        
 
     <br>
     
         <div>
-            <label for="senha">Senha</label>
+            <label for="senha">Senha</label><br>
             <input  type="password" id="senha" [(ngModel)]="user.senha" #email="ngModel" name="senha" required>
 
             <div *ngIf="email.invalid && email.dirty">
                 <p>Insira sua senha</p>
             </div>
         </div>
-
-        <br>
-        
+        </div>
     </div>
-    <button  type="button" (click)="entrar()" >Entrar</button>
+    <div class="panel-body">
+    <button class="btn" type="button" (click)="entrar()" >Entrar</button>
+    </div>
 
 </form>
+</div>
 
 <p>Ainda não tem uma conta? Cadastre-se 
     <a href="cadastro">clicando aqui!</a>

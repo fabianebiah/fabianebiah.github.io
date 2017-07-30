@@ -13,6 +13,10 @@ import { HeaderComponent } from './header/header.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
+import { DataServiceService } from './service/data-service.service';
+import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
+import { DetProdutoComponent } from './det-produto/det-produto.component';
+
 
 
 @NgModule({
@@ -22,7 +26,9 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     CarrinhoComponent,
     CadastroComponent,
-    LoginComponent
+    LoginComponent,
+    AcompanharPedidoComponent,
+    DetProdutoComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot(ROUTES),
     FormsModule      
   ],
-  providers: [],
+  providers: [DataServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

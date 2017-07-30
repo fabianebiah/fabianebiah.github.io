@@ -1,0 +1,25 @@
+ <div class="panel panel-warning ">
+        <div class="panel-heading"><h3>Meu Pedido</h3></div>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+      </tr>
+    </thead>
+     <tbody>
+
+        <tr *ngFor="let list of lista">
+        <td>{{lista[0].pedido.descricao}}</td>
+        <td>{{list.preco}}</td>
+        <td>{{list.quantidade}}</td>
+        <td>
+        </td>
+      </tr>
+    
+     </tbody>
+</table>
+
+ </div>
