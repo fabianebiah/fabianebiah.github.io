@@ -112,16 +112,16 @@ export class DataServiceService {
        console.log(usuariooriginal);
        console.log(usuario);
        console.log(index);
-       if (index > -1) {
-         //list.splice(index, 1);
+     
+         list.splice(index, 1);
          let newlist:Usuario[];
          newlist = this.remove(list, usuariooriginal);
          console.log(JSON.stringify(newlist));
          console.log(JSON.stringify(list));
-          list.push(usuario);
-           localStorage.setItem( "users", JSON.stringify(list));
+          newlist.push(usuario);
+           localStorage.setItem( "users", JSON.stringify(newlist));
   
-      }
+      
 
     }
 
@@ -133,15 +133,14 @@ export class DataServiceService {
       }
       let index: number =list.indexOf(usuario);
     //  let index: number =this.list.indexOf(i => i.Usuario === this.usuario.email); 
-      if (index > -1) {
-
          list.splice(index, 1);
          let newlist:Usuario[];
          newlist = this.remove(list, usuario);
          console.log(JSON.stringify(newlist));
          console.log(JSON.stringify(list));
-           localStorage.setItem( "users", JSON.stringify(list));
-      }
+        localStorage.setItem( "users", JSON.stringify(list));
+        localStorage.removeItem("login");
+  
 
     }
 

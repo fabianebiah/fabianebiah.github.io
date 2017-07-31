@@ -39,6 +39,7 @@ export class CarrinhoComponent implements OnInit {
     inserirCompra(){
       if(this.usuario && this.usuario!=""){
       this.dataService.addPedido(this.usuario,this.lista);
+      window.location.href="acompanharpedido";
       }
 
     }

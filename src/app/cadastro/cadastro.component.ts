@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../modelo/usuario';
 
+import { Usuario } from '../modelo/usuario';
+import{ DataServiceService } from '../service/data-service.service';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -8,14 +9,14 @@ import { Usuario } from '../modelo/usuario';
 })
 export class CadastroComponent implements OnInit {
 
-  usuario = new Usuario('', '', '');
+  usuario: Usuario = new Usuario('', '', '');
   list : Usuario [];
   readonly : string = "Cadastrar";
   readonlybool : boolean = false;
   login:string;
-   usuariooriginal = new Usuario('', '', '');
+   usuariooriginal: Usuario = new Usuario('', '', '');
 
-  constructor() { }
+  constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
    this.list =  JSON.parse(localStorage.getItem("users"));
@@ -34,7 +35,9 @@ export class CadastroComponent implements OnInit {
                   })[0];
                   this.readonly = "Alterar dados";
                   this.readonlybool=true;
-                  this.usuariooriginal=this.usuario;
+                  this.usuariooriginal.nome=this.usuario.nome;
+                  this.usuariooriginal.email=this.usuario.email;
+                  this.usuariooriginal.senha=this.usuario.senha;
          }
               
   }
@@ -44,49 +47,27 @@ export class CadastroComponent implements OnInit {
 
     if (!this.login){
 
-       this.list.push(this.usuario);
-       localStorage.setItem( "users", JSON.stringify(this.list));
-       console.log("push");
-       location.reload();
+       this.dataService.adicionarUsuario(this.usuario);
 
 
     }
     else{
-      let index: number =this.list.indexOf(this.usuariooriginal);
-      if (index > -1) {
 
-         this.list.splice(index, 1);
-         let newlist:Usuario[];
-         newlist = this.remove(this.list, this.usuariooriginal);
-          this.list.push(this.usuario);
-           localStorage.setItem( "users", JSON.stringify(this.list));
+           this.dataService.atualizarUsuario(this.usuariooriginal, this.usuario);
            window.location.href="cadastro";
 
       }
-      else{
 
-      }
     }
-
-  }
 
   remove(array:Usuario[], element:Usuario) {
     return array.filter(e => e !== element);
 }
 
 apagarUsuario(){
-  let index: number =this.list.indexOf(this.usuariooriginal);
-      if (index > -1) {
 
-         this.list.splice(index, 1);
-         let newlist:Usuario[];
-         newlist = this.remove(this.list, this.usuariooriginal);
-           localStorage.setItem( "users", JSON.stringify(this.list));
-           localStorage.removeItem(this.login);
-           localStorage.removeItem("login");
-           window.location.href="cadastro";
-      }
-
+      this.dataService.deletarUsuario(this.usuariooriginal);
+      //window.location.href="cadastro";
   }
 
 }
