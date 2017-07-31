@@ -24,7 +24,7 @@ export class CadastroComponent implements OnInit {
        }
           else{
               this.login = localStorage.getItem("login");
-              console.log(this.login);
+            
 
               if (this.login){
                   this.usuario = this.list.filter(user => {
@@ -36,14 +36,12 @@ export class CadastroComponent implements OnInit {
                   this.readonlybool=true;
                   this.usuariooriginal=this.usuario;
          }
-                console.log("readonly", this.readonlybool);
+              
   }
-console.log(this.readonly);
   }
 
   enviarDados() {
 
-    console.log(this.login);
     if (!this.login){
 
        this.list.push(this.usuario);
@@ -55,14 +53,11 @@ console.log(this.readonly);
     }
     else{
       let index: number =this.list.indexOf(this.usuariooriginal);
-    //  let index: number =this.list.indexOf(i => i.Usuario === this.usuario.email); 
       if (index > -1) {
 
          this.list.splice(index, 1);
          let newlist:Usuario[];
          newlist = this.remove(this.list, this.usuariooriginal);
-         console.log(JSON.stringify(newlist));
-         console.log(JSON.stringify(this.list));
           this.list.push(this.usuario);
            localStorage.setItem( "users", JSON.stringify(this.list));
            window.location.href="cadastro";
@@ -81,16 +76,13 @@ console.log(this.readonly);
 
 apagarUsuario(){
   let index: number =this.list.indexOf(this.usuariooriginal);
-    //  let index: number =this.list.indexOf(i => i.Usuario === this.usuario.email); 
       if (index > -1) {
 
          this.list.splice(index, 1);
          let newlist:Usuario[];
          newlist = this.remove(this.list, this.usuariooriginal);
-         console.log(JSON.stringify(newlist));
-         console.log(JSON.stringify(this.list));
            localStorage.setItem( "users", JSON.stringify(this.list));
-           localStorage.remove(this.login);
+           localStorage.removeItem(this.login);
            localStorage.removeItem("login");
            window.location.href="cadastro";
       }

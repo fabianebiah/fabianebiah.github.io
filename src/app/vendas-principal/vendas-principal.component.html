@@ -1,36 +1,20 @@
 
 <div class="container"> 
     <div class="panel panel-warning ">
-        <div class="panel-heading"><h3>Para Cães</h3></div>
+        <div class="panel-heading"><h3>Ofertas</h3></div>
         <br>
             <div class="row">
-                <div class="col-sm-4"> 
+                <div class="col-sm-4" *ngFor="let prod of produtosStore"> 
                     <div class ="my-product">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <img src="../../assets/img/cama_caes.jpg" alt="Cama" height="128" width="176"> 
-                                        <p>{{cama.descricao}}</p>
-                                        <p>R$ {{cama.preco}}</p>
+                                <img src={{prod.img}} alt="Cama" height="128" width="176"> 
+                                        <p>{{prod.descricao}}</p>
+                                        <p>R$ {{prod.preco}}</p>
                             </div>
                             <div class="panel-footer">
-                                <input class="col-xs-3" type="number" num="1" max="99" id="quantidade" #nome="ngModel" [(ngModel)]="cama.quantidade" name="quant" >
-                                <button class="btn my-button-space" type="button" id="bt1" (click)="inserirCompra(1)">Adicionar ao carrinho</button> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4"> 
-                    <div class ="my-product">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="../../assets/img/coleira_caes.jpg" alt="Cama" height="128" width="176"> 
-                                        <p>{{coleira.descricao}}</p>
-                                        <p>R$ {{coleira.preco}}</p>
-                            </div>
-                            <div class="panel-footer">
-                                <input class="col-xs-3" type="number" num="1" max="99" id="quantidade" #nome="ngModel" [(ngModel)]="coleira.quantidade" name="quant" >
-                                <button class="btn my-button-space" type="button" id="bt2" (click)="inserirCompra(2)">Adicionar ao carrinho</button> 
+                                <input class="col-xs-3" type="number" num="1" max="99" id="quantidade" #nome="ngModel" [(ngModel)]="prod.quantidade" name="quant" >
+                                <button class="btn my-button-space" type="button" id="bt1" (click)="inserirCompra(prod)">Adicionar ao carrinho</button> 
                             </div>
                         </div>
                     </div>
@@ -42,53 +26,4 @@
 <br>
 
 
-
-
-
-<div class="container"> 
-<div class="panel panel-warning">
- <div class="panel-heading"><h3>Para Gatos</h3></div>
- <br>
-  <div class="row">
-
-    <div class="col-sm-4"> 
-        <div class ="my-product">
-            <div class="panel panel-default">
-                <div class ="my-product">
-                    <div class="panel-body">
-                        <img src="assets/img/toca_gatos.jpg" alt="toca" height="128" width="176"> 
-                                <p>{{toca.descricao}}</p>
-                                <p>R$ {{toca.preco}}</p>
-                            </div>
-                    <div class="panel-footer">
-                        
-                        <input class="col-xs-3" type="number" num="1" max="99" id="quantidade" #nome="ngModel" [(ngModel)]="toca.quantidade" name="quant" >
-                                            
-                        <button class="btn my-button-space" type="button" id="bt3" (click)="inserirCompra(3)">Adicionar ao carrinho</button>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-     <div class="col-sm-4"> 
-      <div class="panel panel-default">
-        <div class ="my-product">
-            <div class="panel-body">
-                <img src="../../assets/img/arranhador_gatos.jpg" alt="Cama" height="128" width="176"> 
-                        <p>{{arranhador.descricao}}</p>
-                        <p>R$ {{arranhador.preco}}</p>
-                    </div>
-            <div class="panel-footer">
-                
-                <input class="col-xs-3" type="number" num="1" max="99" id="quantidade" #nome="ngModel" [(ngModel)]="arranhador.quantidade" name="quant" >
-                <button class="btn my-button-space" type="button" id="bt4" (click)="inserirCompra(4)">Adicionar ao carrinho</button> 
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-</div><br>
 

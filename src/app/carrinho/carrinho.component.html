@@ -2,27 +2,22 @@
         <div class="panel-heading"><h3>Produtos no seu Carrinho</h3></div>
 
 <table class="table table-hover">
-    <!--thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-     <tbody-->
+    
+     <tbody>
 
         <tr *ngFor="let list of lista">
         <td>{{list.descricao}}</td>
         <td>{{list.preco}}</td>
         <td>{{list.quantidade}}</td>
         <td>
-            <button class="btn" (onClick)="getIdProduto">Editar</button>
-            <button class="btn">Excluir</button>
+            <button class="btn" type="button" (click)="alterarQtde(list)">Editar</button>
+            <button class="btn" type="button" (click)="excluirProduto(list)" >Excluir</button>
         </td>
       </tr>
     
      </tbody>
 </table>
+    <div [hidden]=!logado>
     <button class="btn my-button-space" type="button" (click)="inserirCompra()">Finalizar Compra</button>
-
+    </div>
  </div>

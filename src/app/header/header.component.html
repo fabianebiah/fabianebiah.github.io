@@ -25,21 +25,9 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             
-        <ul class="nav navbar-nav">
-            <li>
-                            <a (click)="validaLogoff()" href="login">{{msglogin}}</a>
-                        </li>
-                        <li>
-                            <a href="#">Sobre</a>
-                        </li>
-                        <li>
-                            <a href="carrinho">Carrinho</a>
-                        </li>
-                        <li>
-                            <a href="cadastro">{{msgdados}}</a>
-                        </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
+       
+        <ul class="nav navbar-nav navbar-right">            
+            <li><a href="acompanharpedido"><span class="glyphicon glyphicon-tag"></span> Meus Pedidos</a></li>            
             <li><a href="carrinho"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>            
             <li><a href="cadastro"><span class="glyphicon glyphicon-user"></span> {{msgdados}}</a></li>            
             <li><a (click)="validaLogoff()"  href="login"><span class="glyphicon glyphicon-log-in"></span> {{msglogin}}</a></li>

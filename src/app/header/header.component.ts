@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import{ DataServiceService } from '../service/data-service.service'
 
 
 @Component({
@@ -11,12 +12,13 @@ export class HeaderComponent implements OnInit {
   logado: boolean = false;
   msglogin: string = "Login";
   msgdados: string = "Criar uma conta"
-  constructor() { }
+
+  constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
 
 
-     let userlogin : string =localStorage.getItem("login");
+     let userlogin : string =this.dataService.getLogin();
      
      if(!userlogin|| userlogin==""){
          this.logado = false;
@@ -33,10 +35,8 @@ export class HeaderComponent implements OnInit {
   }
 
   validaLogoff(){
-    console.log("logado");
     if(this.logado){
-      console.log("remover");
-      localStorage.removeItem("login") ;
+      this.dataService.logoff();
       this.logado = false;
       window.location.href="";
 

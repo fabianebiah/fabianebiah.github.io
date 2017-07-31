@@ -1,25 +1,30 @@
  <div class="panel panel-warning ">
-        <div class="panel-heading"><h3>Meu Pedido</h3></div>
+        <div class="panel-heading"><h3>Meus Pedidos</h3></div>
+    <div  *ngFor="let list of lista">
+          <h4>{{list.data}}</h4>    
 
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Produto</th>
-        <th>Preço</th>
-        <th>Quantidade</th>
-      </tr>
-    </thead>
-     <tbody>
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
 
-        <tr *ngFor="let list of lista">
-        <td>{{lista[0].pedido.descricao}}</td>
-        <td>{{list.preco}}</td>
-        <td>{{list.quantidade}}</td>
-        <td>
-        </td>
-      </tr>
-    
-     </tbody>
-</table>
-
- </div>
+            <tr *ngFor="let prod of list.pedido">
+              <td>{{prod.descricao}}</td>
+              <td>{{prod.preco}}</td>
+              <td>{{prod.quantidade}}</td>
+            </tr>          
+          </tbody>
+      </table>
+    </div>  
+    <div [hidden]=logado>
+      <p>Faça seu login para acompanhar seus pedidos</p>
+    </div>
+     <div [hidden]=!logado>
+    <a href="relatorio">Relatório das minhas compras</a>           
+    </div>
+</div>

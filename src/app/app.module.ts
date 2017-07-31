@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { DataServiceService } from './service/data-service.service';
 import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
 import { DetProdutoComponent } from './det-produto/det-produto.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 
 
@@ -28,7 +29,8 @@ import { DetProdutoComponent } from './det-produto/det-produto.component';
     CadastroComponent,
     LoginComponent,
     AcompanharPedidoComponent,
-    DetProdutoComponent
+    DetProdutoComponent,
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,

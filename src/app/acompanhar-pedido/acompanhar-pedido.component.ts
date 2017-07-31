@@ -4,6 +4,7 @@ import { Usuario } from '../modelo/usuario';
 import { Produto } from '../modelo/produto'
 import { Pedido } from '../modelo/pedido'
 import { Compra } from '../modelo/compra'
+import { DataServiceService } from '../service/data-service.service'
 
 @Component({
   selector: 'app-acompanhar-pedido',
@@ -15,15 +16,17 @@ export class AcompanharPedidoComponent implements OnInit {
  
   lista: Pedido [] =[];
   usuario : string; 
+  logado:boolean;
 
-  constructor() { }
+  constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
-    this.usuario =  localStorage.getItem("login"); 
-    if(!this.usuario){
-      alert("Você não está logado. Por Favor, faça o Login.")
+    this.usuario =  this.dataService.getLogin(); 
+    if(!this.usuario||this.usuario==''){
+      this.logado=false;
     }
     else{
+      this.logado=true;
       this.listarCompras();
     }
   }
@@ -31,11 +34,9 @@ export class AcompanharPedidoComponent implements OnInit {
     listarCompras(){
   
 
-    this.lista = JSON.parse(localStorage.getItem(this.usuario + "_compra"));
-    let compras:Compra[]=this.lista[0].pedido;
-    this.lista[0].pedido[0].descricao;
-
-    console.log(this.lista[0].pedido[0].descricao);
+    this.lista = JSON.parse(localStorage.getItem(this.usuario + "_compras"));
+     
+    console.log(this.lista[0].data);
 
   }
 

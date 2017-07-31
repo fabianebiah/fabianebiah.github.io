@@ -6,7 +6,7 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 import { AcompanharPedidoComponent } from './acompanhar-pedido/acompanhar-pedido.component';
-
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 export const ROUTES: Routes = [
  
@@ -15,8 +15,8 @@ export const ROUTES: Routes = [
   {path: 'carrinho', component: CarrinhoComponent},
   {path: 'cadastro', component: CadastroComponent},
   {path: 'acompanharpedido', component: AcompanharPedidoComponent},
-
-  {path: '**', component: VendasPrincipalComponent}
+  {path: 'relatorio', component: RelatorioComponent},
+  {path: '*', component: VendasPrincipalComponent}
 ]
 
 

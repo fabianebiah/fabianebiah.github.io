@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../modelo/usuario';
-import { Produto } from '../modelo/produto'
-import{ DataServiceService } from '../service/data-service.service'
+import { Produto } from '../modelo/produto';
+import { Compra } from '../modelo/compra';
+import{ DataServiceService } from '../service/data-service.service';
 
 
 @Component({
@@ -13,40 +14,37 @@ export class CarrinhoComponent implements OnInit {
 
   lista: Produto [] =[];
   usuario : string; 
+  logado:boolean;
 
   constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
-    this.usuario =  localStorage.getItem("login"); 
+    this.usuario =  this.dataService.getLogin(); 
     if(!this.usuario){
+      this.logado=false;
       alert("Você não está logado. Por Favor, faça o Login.")
     }
     else{
       this.listarCompras();
+      this.logado=true;
     }
   }
 
     listarCompras(){
 
     this.lista = JSON.parse(localStorage.getItem(this.usuario));
-    //console.log(this.lista);
 
   }
 
     inserirCompra(){
       if(this.usuario && this.usuario!=""){
-        //inserrir serviço get list carrinho
-        /*let today = new Date();
-
-        
-        let compra: string =this.usuario + "_compra";
-        localStorage.setItem(compra, JSON.stringify(this.lista));
-        localStorage.removeItem(this.usuario);*/
-      //  addPedido(this.usuario, );
-
       this.dataService.addPedido(this.usuario,this.lista);
       }
 
+    }
+
+    excluirProduto(compra: Compra){
+      this.dataService.excluiProdutoCompra(compra);
     }
     
  }

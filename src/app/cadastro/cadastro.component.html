@@ -48,7 +48,7 @@
     <br><br>
 
     <button class="btn" [hidden]="!readonly" type="submit" [disabled]="cadastro.form.invalid">{{readonly}}</button>
-    <button class="btn" [disabled]="!readonlybool" (click)="apagarUsuario" type="button">Apagar minha conta</button>
+    <button class="btn" [disabled]="!readonlybool" (click)="apagarUsuario()" type="button">Apagar minha conta</button>
    
 </form>
 </div>
