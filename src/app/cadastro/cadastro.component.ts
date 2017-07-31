@@ -67,7 +67,7 @@ export class CadastroComponent implements OnInit {
 apagarUsuario(){
 
       this.dataService.deletarUsuario(this.usuariooriginal);
-      //window.location.href="cadastro";
+      window.location.href="cadastro";
   }
 
 }
